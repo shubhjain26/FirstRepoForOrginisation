@@ -11,7 +11,6 @@ node {
       sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectName=Groovy-Test -Dsonar.projectVersion=1.0 -Dsonar.projectKey=Groovy-Project-Key -Dsonar.sources=. -Dsonar.language=java"
     }
   }
-}
         
         stage('build') {
         // Building Code
