@@ -16,12 +16,12 @@ node {
         }
         
         stage('SonarQube analysis') {
-                def workspace = pwd()
-                ws("$workspace") {
+          def workspace = pwd()
+          ws("$workspace") {
     // requires SonarQube Scanner 2.8+
-    def scannerHome = tool 'sonarScanner';
+    def scannerHome = tool 'SonarQube Scanner 2.8';
     withSonarQubeEnv('Sonar_Server_5.6.6') {
-      sh "${scannerHome}/bin/sonar-scanner.sh"
+      sh "${scannerHome}/bin/sonar-scanner"
     }
   }
 }
