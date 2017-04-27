@@ -4,11 +4,6 @@ node {
            git 'https://github.com/vaibhavjain882/emsdockerhub.git'
         }    
         
-        stage('build') {
-        // Building Code
-           sh 'mvn clean install package'
-        }
-        
         stage('SonarQube analysis') {
           def workspace = pwd()
           ws("$workspace") {
@@ -19,6 +14,13 @@ node {
     }
   }
 }
+        
+        stage('build') {
+        // Building Code
+           sh 'mvn clean install package'
+        }
+        
+        
         stage('Archive Artefact') {
             // Archive Artefact after build
             archive excludes: '', includes: 'target/*.war'
