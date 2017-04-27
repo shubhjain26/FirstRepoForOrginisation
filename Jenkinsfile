@@ -21,7 +21,7 @@ node {
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'SonarScanner';
     withSonarQubeEnv('Sonar_Server_5.6.6') {
-      sh "${scannerHome}/bin/sonar-scanner"
+      sh "${scannerHome}/bin/sonar-scanner Dsonar.projectName=xxx -Dsonar.projectVersion=xxx -Dsonar.projectKey=xxx -Dsonar.sources=.""
     }
   }
 }
