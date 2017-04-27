@@ -9,12 +9,6 @@ node {
            sh 'mvn clean install package'
         }
         
-        stage('Archive Artefact') {
-            // Archive Artefact after build
-            archive excludes: '', includes: 'target/*.war'
-            
-        }
-        
         stage('SonarQube analysis') {
           def workspace = pwd()
           ws("$workspace") {
@@ -25,4 +19,11 @@ node {
     }
   }
 }
+        stage('Archive Artefact') {
+            // Archive Artefact after build
+            archive excludes: '', includes: 'target/*.war'
+            
+        }
+        
+        
 } 
