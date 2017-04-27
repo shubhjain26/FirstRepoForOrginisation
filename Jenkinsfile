@@ -14,4 +14,14 @@ node {
             archive excludes: '', includes: 'target/*.war'
             
         }
+        
+        stage('SonarQube analysis') {
+                ws('$PWD()') {
+    // requires SonarQube Scanner 2.8+
+    def scannerHome = tool 'sonarScanner';
+    withSonarQubeEnv('Sonar_Server_5.6.6') {
+      sh "${scannerHome}/bin/sonar-runner.sh"
+    }
+  }
+}
 } 
